@@ -4,7 +4,7 @@
     </div>
   
     <div class="links-container">
-        <a routerLink="" [ngClass]="{{title}}">Teachers</a>
+        <a routerLink="" [ngClass]="{bold : title=='Teachers'}">Teachers</a>
         <p>|</p>
         <a routerLink="student" [ngClass]="{bold : title=='Students'}">Students</a>
     </div>
