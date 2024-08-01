@@ -54,7 +54,7 @@ const addTeacher = async (id, name, age) => {
     const sql = `INSERT INTO teacher(id,name,age) values(?, ?, ?)`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql,[id,name,age])
             .then((data) => {
                 resolve(data);
             })
@@ -68,9 +68,9 @@ const updateTeacher = async (name, age, id) => {
     const sql = `UPDATE teacher SET name=?, age=? WHERE id=?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
-            .then((data) => {
-                resolve(data);
+            .raw(sql, [name, age, id])
+            .then(() => {
+                resolve({status: "Successfully updated Teacher"})
             })
             .catch((error) => {
                 reject(error);
@@ -110,7 +110,7 @@ const readStudentInfo = async (id) => {
     const sql = `SELECT * FROM student WHERE id = ?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql,[id])
             .then((data) => {
                 resolve(data);
             })
@@ -124,7 +124,7 @@ const addStudent = async (id, name, age, religion) => {
     const sql = `INSERT INTO student(id,name,age,religion) values (?, ?, ?,?)`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql,[id,name,religion])
+            .raw(sql,[id,name,age,religion])
             .then((data) => {
                 resolve(data);
             })
@@ -138,7 +138,7 @@ const updateStudent = async (name, age, religion, id) => {
     const sql = `UPDATE student SET name=?, age=? WHERE id=?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql,[name,age,religion,id])
             .then((data) => {
                 resolve(data);
             })
@@ -152,7 +152,7 @@ const deleteStudent = async (id) => {
     const sql = `DELETE FROM student WHERE id = ?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql,[id])
             .then((data) => {
                 resolve(data);
             })
