@@ -1,4 +1,4 @@
- "name: Autograding Tests
+name: Autograding Tests
 'on':
 - workflow_dispatch
 - repository_dispatch
@@ -13,10 +13,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 20 # Specify your desired Node.js version
+        node-version: '18.x' # Specify your desired Node.js version
+
+    - name: Install Dependencies
+      run: npm install
 
     - name: Backend List Teachers
       id: backend-list-teachers
@@ -188,7 +192,5 @@ jobs:
         FRONTEND-SEARCH-STUDENT_RESULTS: "${{steps.frontend-search-student.outputs.result}}"
         FRONTEND-ADD-TEACHER_RESULTS: "${{steps.frontend-add-teacher.outputs.result}}"
         FRONTEND-DELETE-TEACHER_RESULTS: "${{steps.frontend-delete-teacher.outputs.result}}"
-        FRONTEND-EDIT-TEACHER_RESULTS: "${{steps.frontend-edit-teacher.outputs.result}}"
-        FRONTEND-SEARCH-TEACHER_RESULTS: "${{steps.frontend-search-teacher.outputs.result}}"
-      with:
+        with:
         runners: backend-list-teachers,backend-add-teacher,backend-edit-teacher,backend-delete-teacher,backend-list-students,backend-add-student,backend-edit-student,backend-delete-student,dummy-test,frontend-add-student,frontend-delete-student,frontend-edit-student,frontend-search-student,frontend-add-teacher,frontend-delete-teacher,frontend-edit-teacher,frontend-search-teacher"
