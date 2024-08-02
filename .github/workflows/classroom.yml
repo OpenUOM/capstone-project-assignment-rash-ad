@@ -17,7 +17,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18.x' # Specify your desired Node.js version
+        node-version: 20 # Specify your desired Node.js version
 
     - name: Install Dependencies
       run: npm install
@@ -193,4 +193,4 @@ jobs:
         FRONTEND-ADD-TEACHER_RESULTS: "${{steps.frontend-add-teacher.outputs.result}}"
         FRONTEND-DELETE-TEACHER_RESULTS: "${{steps.frontend-delete-teacher.outputs.result}}"
         with:
-        runners: backend-list-teachers,backend-add-teacher,backend-edit-teacher,backend-delete-teacher,backend-list-students,backend-add-student,backend-edit-student,backend-delete-student,dummy-test,frontend-add-student,frontend-delete-student,frontend-edit-student,frontend-search-student,frontend-add-teacher,frontend-delete-teacher,frontend-edit-teacher,frontend-search-teacher"
+        runners:" backend-list-teachers,backend-add-teacher,backend-edit-teacher,backend-delete-teacher,backend-list-students,backend-add-student,backend-edit-student,backend-delete-student,dummy-test,frontend-add-student,frontend-delete-student,frontend-edit-student,frontend-search-student,frontend-add-teacher,frontend-delete-teacher,frontend-edit-teacher,frontend-search-teacher"
