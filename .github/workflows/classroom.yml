@@ -10,7 +10,7 @@ jobs:
   run-autograding-tests:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
-  steps:
+    steps:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Backend List Teachers
